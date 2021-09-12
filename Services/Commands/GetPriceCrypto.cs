@@ -45,7 +45,7 @@ namespace Telegram.CryptoTracker.Bot.Services.Commands
 
                     string sumbolToken = message.Text.Split()[1].ToUpper();
 
-                    double priceToken = await tokenInfo.GetPriceToken(sumbolToken);
+                    decimal priceToken = await tokenInfo.GetPriceToken(sumbolToken);
 
                     if (priceToken > 0)
 

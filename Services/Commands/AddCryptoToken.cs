@@ -149,7 +149,7 @@ namespace Telegram.CryptoTracker.Bot.Services.Commands
                    replyMarkup: inlineKeyboard);
         }
 
-        private async Task<(string symbolToken, double averagePurchasePrice, double volume)> getTokenPriceFromMessage(Message message)
+        private async Task<(string symbolToken, decimal averagePurchasePrice, decimal volume)> getTokenPriceFromMessage(Message message)
         {
             var tokenInfo = new TokenInfo();
 
@@ -158,10 +158,10 @@ namespace Telegram.CryptoTracker.Bot.Services.Commands
             if (message.Text.Split().Length == 4 && await tokenInfo.ExistSymbolToken(symbolToken))
             {
 
-                if (Double.TryParse(message.Text.Split()[2], NumberStyles.Float,
-                                      CultureInfo.InvariantCulture, out double averagePurchasePrice) &
-                                    Double.TryParse(message.Text.Split()[3], NumberStyles.Float,
-                                       CultureInfo.InvariantCulture, out double volume))
+                if (Decimal.TryParse(message.Text.Split()[2], NumberStyles.Float,
+                                      CultureInfo.InvariantCulture, out decimal averagePurchasePrice) &
+                                    Decimal.TryParse(message.Text.Split()[3], NumberStyles.Float,
+                                       CultureInfo.InvariantCulture, out decimal volume))
                     return (symbolToken, averagePurchasePrice, volume);
             }
 

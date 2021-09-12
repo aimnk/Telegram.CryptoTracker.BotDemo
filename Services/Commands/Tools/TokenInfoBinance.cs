@@ -37,10 +37,10 @@ namespace Telegram.CryptoTracker.Bot.Services.Commands.Tools
         private class CryptoToken
         {
             public string symbol { get; set; }
-            public double price { get; set; }
+            public decimal price { get; set; }
         }
 
-        public async override Task<double> GetPriceTokenFromApi()
+        public async override Task<decimal> GetPriceTokenFromApi()
         {
 
                 string bodyPage = await getPageApi();
@@ -50,7 +50,7 @@ namespace Telegram.CryptoTracker.Bot.Services.Commands.Tools
                 if (infoToken == null)
                     return 0;
 
-                if (infoToken.price < 0.00001)
+                if (infoToken.price < Convert.ToDecimal(0.0001))
                     return infoToken.price;
                 else
                     return Math.Round(infoToken.price, 5);

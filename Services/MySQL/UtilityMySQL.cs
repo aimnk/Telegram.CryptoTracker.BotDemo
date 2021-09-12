@@ -107,7 +107,7 @@ namespace Telegram.CryptoTracker.Bot.Services.MySQL
             return (false, nameToken);
         }
 
-        public void AddData(long userID, string symbolToken, double averagePurchasePrice, double volume)
+        public void AddData(long userID, string symbolToken, decimal averagePurchasePrice, decimal volume)
         {
             using (ApplicationContext db = new ApplicationContext())
             {
@@ -117,7 +117,7 @@ namespace Telegram.CryptoTracker.Bot.Services.MySQL
             }
         }
 
-        public void RepeatData(long userID, string symbolToken, double averagePurchasePrice, double volume)
+        public void RepeatData(long userID, string symbolToken, decimal averagePurchasePrice, decimal volume)
         {
 
             var userData = GetData(userID);

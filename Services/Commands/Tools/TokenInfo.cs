@@ -7,10 +7,10 @@ namespace Telegram.CryptoTracker.Bot.Services.Commands.Tools
 
     public class TokenInfo
     {
-        public async virtual Task<double> GetPriceToken(string symbolToken)
+        public async virtual Task<decimal> GetPriceToken(string symbolToken)
         {           
             var tokenInfoBinance = new TokenInfoBinance(symbolToken);
-            double priceToken = await tokenInfoBinance.GetPriceToken();
+            decimal priceToken = await tokenInfoBinance.GetPriceToken();
 
             if (priceToken == 0)
                 return 0;

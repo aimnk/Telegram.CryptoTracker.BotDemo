@@ -52,18 +52,18 @@ namespace Telegram.CryptoTracker.Bot.Services.Commands
                 if (userData != null)
                     {                    
                         int i = 1;
-                        double summvolume = 0;
-                        double summprofit = 0;
+                        decimal summvolume = 0;
+                        decimal summprofit = 0;
                         var tokenInfo = new TokenInfo();
 
                      foreach (Data u in userData)
                           {
 
 
-                            double priceToken = await tokenInfo.GetPriceToken(u.Token);
-                            double amount = u.Volume / u.PriceAverage;
-                            double fullprice = amount * priceToken;
-                            double profit = fullprice - u.Volume;
+                            decimal priceToken = await tokenInfo.GetPriceToken(u.Token);
+                            decimal amount = u.Volume / u.PriceAverage;
+                            decimal fullprice = amount * priceToken;
+                            decimal profit = fullprice - u.Volume;
 
                             await _botService.Client.SendTextMessageAsync(message.Chat.Id, $"{char.ConvertFromUtf32(0x0023)} {i}\r\n" +
                                 $"{char.ConvertFromUtf32(0x1F536)} Монета: {u.Token}\r\n" +
