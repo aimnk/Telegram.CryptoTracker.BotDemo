@@ -3,32 +3,32 @@
     public class UtilityFinancial
     {
 
-        public double GetProfit(double volume, double averagePurchasePrice, double priceTokenNow)
+        public decimal GetProfit(decimal volume, decimal averagePurchasePrice, decimal priceTokenNow)
         {
-            double priceToken = GetPriceToken(volume, averagePurchasePrice, priceTokenNow);
+            decimal priceToken = GetPriceToken(volume, averagePurchasePrice, priceTokenNow);
             return priceToken - volume;
         }
 
 
-        public double GetPriceToken(double volume, double averagePurchasePrice, double priceTokenNow)
+        public decimal GetPriceToken(decimal volume, decimal averagePurchasePrice, decimal priceTokenNow)
         {
-            double amount = GetAmountToken(volume, averagePurchasePrice);
+            decimal amount = GetAmountToken(volume, averagePurchasePrice);
             return amount * priceTokenNow;
         }
 
-        public double GetAmountToken(double volume, double averagePurchasePrice)
+        public decimal GetAmountToken(decimal volume, decimal averagePurchasePrice)
         {
-            double result = volume / averagePurchasePrice;
+            decimal result = volume / averagePurchasePrice;
             return result;
         }
 
-        public (double finalPriceAverage, double finalVolume) GetPriceAverage(double startVolume, double endVolume, double startAveragePurchasePrice, double endAveragePurchasePrice)
+        public (decimal finalPriceAverage, decimal finalVolume) GetPriceAverage(decimal startVolume, decimal endVolume, decimal startAveragePurchasePrice, decimal endAveragePurchasePrice)
         {
-            double amountTokenStart = GetAmountToken(startVolume, startAveragePurchasePrice);
-            double amountTokenEnd = GetAmountToken(endVolume, endAveragePurchasePrice);
+            decimal amountTokenStart = GetAmountToken(startVolume, startAveragePurchasePrice);
+            decimal amountTokenEnd = GetAmountToken(endVolume, endAveragePurchasePrice);
 
-            double finalAveragePurchasePrice = (amountTokenStart * startAveragePurchasePrice + amountTokenEnd * endAveragePurchasePrice) / (amountTokenStart + amountTokenEnd);
-            double finalVolume = startVolume + endVolume;
+            decimal finalAveragePurchasePrice = (amountTokenStart * startAveragePurchasePrice + amountTokenEnd * endAveragePurchasePrice) / (amountTokenStart + amountTokenEnd);
+            decimal finalVolume = startVolume + endVolume;
 
             return (finalAveragePurchasePrice, finalVolume);
         }
